@@ -1,7 +1,8 @@
-﻿using System.Net.Http;
+﻿using Microsoft.AspNetCore.DataProtection.KeyManagement;
+using Microsoft.Extensions.Configuration;
+using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
 using WeatherWebApp.Models;
 
 namespace WeatherWebApp.Services
@@ -14,7 +15,7 @@ namespace WeatherWebApp.Services
         public WeatherService(HttpClient httpClient, IConfiguration configuration)
         {
             _httpClient = httpClient;
-            _apiKey = configuration["OpenWeather:ApiKey"];
+            _apiKey = Environment.GetEnvironmentVariable("OPENWEATHER_API_KEY");
         }
 
         public async Task<WeatherResponse> GetWeatherAsync(string city)

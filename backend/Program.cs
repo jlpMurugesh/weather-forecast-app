@@ -1,4 +1,6 @@
+using DotNetEnv;
 using WeatherWebApp.Services;
+Env.Load();
 
 var builder = WebApplication.CreateBuilder(args);
 
